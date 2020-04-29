@@ -1,0 +1,19 @@
+
+{% extends 'jun/base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'jun/style.css' %}" />
+
+    <h1>{{question.question_text}}</h1>
+
+    <ul>
+      {% for choice in question.choice_set.all %}
+        <li>{{choice.choice_text}} : {{choice.votes}} 표</li>
+      {% endfor %}
+    </ul>
+
+    <a href="{% url 'jun:detail' question.id %}">투표 화면으로 돌아가기</a>
+
+
+{% endblock content %}
